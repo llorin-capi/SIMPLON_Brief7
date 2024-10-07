@@ -13,5 +13,5 @@ L'objectif de ce projet est de simuler un tournoi Pokémon auquel participent 16
 ## Exemple de résultat
 
 ## Auteurs
-* Léa Lorin
-* Yohan Matheus
+* Léa Lorin @llorin-capi
+* Yohan Matheus @codeboy1992

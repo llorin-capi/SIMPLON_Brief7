@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Tournament</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='lea_front.css') }}">
+</head>
+<body>
+    <h1>Pokémon Tournament</h1>
+
+
+
+    <div class="rounds">
+        {% for round in rounds %}
+        <div class="round">
+            <h2>Round {{ round.round_number }}</h2>
+            <div class="matches">
+                {% for match in round.matches %}
+                <div class="match">
+                    <div class="pokemon">
+                        <img src="{{ match.pokemon1.sprite }}" alt="{{ match.pokemon1.name }}">
+                        <p>{{ match.pokemon1.name }}</p>
+                        <p>HP: {{ match.pokemon1.hp }}</p>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="pokemon">
+                        <img src="{{ match.pokemon2.sprite }}" alt="{{ match.pokemon2.name }}">
+                        <p>{{ match.pokemon2.name }}</p>
+                        <p>HP: {{ match.pokemon2.hp }}</p>
+                    </div>
+                    <p class="winner">Winner: {{ match.winner.name }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="final-winner">
+        <h2>Final Winner: {{ winner.name }}</h2>
+        <img src="{{ winner.sprite }}" alt="{{ winner.name }}">
+        <p>HP: {{ winner.hp }}</p>
+    </div>
+
+    <!-- Bouton de régénération -->
+    <button id="regenerate-button">Regenerate Tournament</button>
+    
+    <script src="{{ url_for('static', filename='lea_front.js') }}"></script>
+</body>
+</html>

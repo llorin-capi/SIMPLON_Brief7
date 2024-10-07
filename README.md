@@ -5,7 +5,7 @@ L'objectif de ce projet est de simuler un tournoi Pokemon, réalisé à partir d
 
 ## Requirements
 PokéAPI v.2  
-Python 3.12.6 avec les librairies nécessaires (voir ![requirements.txt](requirements.txt) )
+Python 3.12.6 avec les librairies nécessaires (voir [requirements.txt](requirements.txt) )
 
 ## Utilisation des fichiers
 1. Faire tourner le script python

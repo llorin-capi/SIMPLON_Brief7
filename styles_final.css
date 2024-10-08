@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f7f7f7;
+}
+
+h1 {
+    color: #333;
+}
+
+.rounds {
+    margin: 20px auto;
+}
+
+.round {
+    margin-bottom: 20px;
+}
+
+.matches {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.match {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.pokemon img {
+    width: 100px;
+    height: 100px;
+}
+
+.pokemon p {
+    margin: 5px 0;
+}
+
+.vs {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.winner {
+    color: green;
+    font-weight: bold;
+}
+
+.final-winner {
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.final-winner img {
+    width: 150px;
+    height: 150px;
+}
+
+#regenerate-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#fighter-count {
+    font-size: 18px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.participant-selection {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.top-buttons {
+    position: relative;
+    top: 0;
+}
+
+.bottom-buttons {
+    position: relative;
+    bottom: 0;
+    margin-top: 50px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    background-color: #4CAF50; /* Couleur par défaut */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049; /* Couleur au survol */
+}
+
+button.selected {
+    background-color: red; /* Couleur du bouton sélectionné */
+    color: white;
+}

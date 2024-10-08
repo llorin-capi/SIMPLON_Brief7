@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Tournament</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='lea_front.css') }}">
+</head>
+<body>
+    <h1>Pokémon Tournament</h1>
+    
+    <!-- Boutons pour choisir le nombre de Pokémon -->
+    <div class="participant-selection">
+        <button id="btn-16-top">16</button>
+        <button id="btn-32-top">32</button>
+        <button id="btn-64-top">64</button>
+        <button id="btn-128-top">128</button>
+    </div>
+
+    <div class="rounds">
+        {% for round in rounds %}
+        <div class="round">
+            <h2>Round {{ round.round_number }}</h2>
+            <div class="matches">
+                {% for match in round.matches %}
+                <div class="match">
+
+                    <!-- Afficher les images des deux Pokémon en combat -->
+                    <div class="pokemon-images">
+                        <div>
+                            <h4>{{ match.pokemon1.name }}</h4>
+                            <img src="{{ match.pokemon1.sprite }}" alt="{{ match.pokemon1.name }}">
+                        </div>
+                        <div style="font-weight: bold; font-size: larger;">VS</div>
+                        <div>
+                            <h4>{{ match.pokemon2.name }}</h4>
+                            <img src="{{ match.pokemon2.sprite }}" alt="{{ match.pokemon2.name }}">
+                        </div>
+                    </div>
+
+                    <!-- Afficher le log du combat -->
+                    <div class="battle-log">
+                        {% for log in match.log %}
+                        <p>
+                            {% if log.ko %}
+                            {{ log.message }}
+                            {% else %}
+                            <strong>{{ log.attacker }}</strong> attaque <strong>{{ log.defender }}</strong> :
+                            Inflige <span style="color: red;">{{ log.degats }}</span> dégâts.
+                            HP Initiaux : <span style="color: green;">{{ log.hp_initial }}</span>,
+                            HP Restants : <span style="color: rgb(5, 193, 5);">{{ log.hp_restants }}</span>,
+                            Défense Initiale : <span style="color: blue;">{{ log.defense_initial }}</span>,
+                            Défense Restante : <span style="color: rgb(0, 0, 163);">{{ log.defense_restante }}</span>.
+                            {% endif %}
+                        </p>
+                        {% endfor %}
+                    </div>
+                    
+                    
+
+                    <!-- Afficher la photo du vainqueur -->
+                    <div class="winner-photo">
+                        <h4>Vainqueur : {{ match.winner.name }}</h4>
+                        <img src="{{ match.winner.sprite }}" alt="{{ match.winner.name }}">
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Afficher le vainqueur final -->
+    <div class="final-winner">
+        <h2>Vainqueur final : {{ winner.name }}</h2>
+        <img src="{{ winner.sprite }}" alt="{{ winner.name }}">
+    </div>
+
+    <!-- Boutons pour choisir le nombre de Pokémon (en bas) -->
+    <div class="participant-selection">
+        <button id="btn-16-bottom">16</button>
+        <button id="btn-32-bottom">32</button>
+        <button id="btn-64-bottom">64</button>
+        <button id="btn-128-bottom">128</button>
+    </div>
+
+    <!-- Script pour le JavaScript -->
+    <script src="{{ url_for('static', filename='lea_front.js') }}"></script>
+</body>
+</html>

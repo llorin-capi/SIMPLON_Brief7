@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-ico" href="{{ url_for('static', filename='pokeball_icone.ico') }}">
+    <title>Pokémon Tournament</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='lea_front.css') }}">
+</head>
+<body>
+    
+    <h1>
+        <img src="{{url_for('static', filename='pokeball_gauche.png')}}" alt="Pokeball gauche">
+        Pokémon Tournament
+        <img src="{{url_for('static', filename='pokeball_droite.png')}}" alt="Pokeball droite">
+    </h1>
+
+    <!-- Boutons en haut de la page -->
+    <div class="participant-selection top-buttons">
+        <h4>Choisissez le nombre de participants que vous souhaitez voir combattre.</h4>
+        <button id="btn-8-top">8</button>
+        <button id="btn-16-top">16</button>
+        <button id="btn-32-top">32</button>
+        <button id="btn-64-top">64</button>
+        <button id="btn-128-top">128</button>
+        <p id="fighter-count-top">Nombre de combattants sélectionnés : 8</p>
+    </div>
+
+    <div class="rounds">
+        {% for round in rounds %}
+        <div class="round">
+            <h2>Round {{ round.round_number }}</h2>
+            <div class="matches">
+                {% for match in round.matches %}
+                <div class="match">
+                    <div class="pokemon">
+                        <img src="{{ match.pokemon1.sprite }}" alt="{{ match.pokemon1.name }}">
+                        <p>{{ match.pokemon1.name }}</p>
+                        <p>HP: {{ match.pokemon1.hp }}</p>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="pokemon">
+                        <img src="{{ match.pokemon2.sprite }}" alt="{{ match.pokemon2.name }}">
+                        <p>{{ match.pokemon2.name }}</p>
+                        <p>HP: {{ match.pokemon2.hp }}</p>
+                    </div>
+                    <p class="winner">Winner: {{ match.winner.name }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="final-winner">
+        <h2>Final Winner: {{ winner.name }}</h2>
+        <img src="{{ winner.sprite }}" alt="{{ winner.name }}">
+        <p>HP: {{ winner.hp }}</p>
+    </div>
+
+    <!-- Boutons en bas de la page -->
+    <div class="participant-selection bottom-buttons">
+        <h4>Choisissez le nombre de participants que vous souhaitez voir combattre.</h4>
+        <button id="btn-8-bottom">8</button>
+        <button id="btn-16-bottom">16</button>
+        <button id="btn-32-bottom">32</button>
+        <button id="btn-64-bottom">64</button>
+        <button id="btn-128-bottom">128</button>
+        <p id="fighter-count-bottom">Nombre de combattants sélectionnés : 8</p>
+    </div>
+
+    <script src="{{ url_for('static', filename='lea_front.js') }}"></script>
+
+    <!-- Lien vers le fichier JavaScript et la bibliothèque confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
